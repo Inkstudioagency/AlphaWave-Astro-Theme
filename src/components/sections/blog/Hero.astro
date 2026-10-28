@@ -1,0 +1,38 @@
+---
+// Blog article hero (data from Strapi)
+import { formatDate, type BlogPost } from '@/lib/content';
+
+interface Props {
+  post: BlogPost;
+}
+const { post } = Astro.props;
+---
+
+<section class="section_blog-details-hero">
+  <div class="container-main">
+    <div class="blog-details-hero-card">
+      <div class="hero-glow"></div>
+      <div class="blog-details-hero-glow"></div>
+      <div class="blog-details-hero-content">
+        <div class="blog-details-hero-top">
+          <div page-load-1="" class="blog-details-meta">
+            <div class="blog-details-meta-text">{post.author.name}</div>
+            <div class="blog-details-meta-text">-</div>
+            <div class="blog-details-meta-text">{formatDate(post.publishedDate)}</div>
+          </div>
+          <h1 hero-title="" class="hero-title">{post.title}</h1>
+        </div>
+        <div page-load-2="" class="blog-details-author">
+          <div class="blog-details-author-label">Author</div>
+          <div class="blog-details-author-card">{post.author.photo && <img src={post.author.photo.url} loading="lazy" alt={post.author.photo.alt} class="blog-details-author-photo" />}
+            <div class="blog-details-author-info">
+              <div class="blog-details-author-name">{post.author.name}</div>
+              <div class="blog-details-author-role">{post.author.role}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div page-load-3="" class="blog-details-hero-image-wrap"><img src={post.mainImage.url} loading="lazy" alt={post.mainImage.alt} class="blog-details-hero-image" /></div>
+    </div>
+  </div>
+</section>

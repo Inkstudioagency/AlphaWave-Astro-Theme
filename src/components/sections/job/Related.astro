@@ -1,0 +1,40 @@
+---
+// Related jobs: jobs flagged "Show in related" in Strapi, newest first
+import JobCard from '@/components/cards/JobCard.astro';
+import EmptyState from '@/components/cards/EmptyState.astro';
+import { getRelatedJobs } from '@/lib/content';
+
+const jobs = await getRelatedJobs(4);
+const instance = ['aa2818a4-3451-a5da-e0fb-f1e893d4855c_instance-0'];
+---
+
+<section class="section_job-details-related">
+  <div class="container-main">
+    <div class="jobs-list-wrapper">
+      <div class="section-header-row">
+        <h2 section-title="" class="heading-style-2">Browse Related <span class="heading-accent">Jobs</span></h2>
+        <div reveal-anim-2="" class="job-details-related-button">
+          <a data-wf-target="[[[&quot;f8b8f88f-4d53-daea-faff-1d6d7cdf2822&quot;,&quot;f8b8f88f-4d53-daea-faff-1d6d7cdf2822&quot;],[&quot;3598cbfd-14ad-1d89-953e-bf66fbd528b3&quot;]]]" data-wf--small-primary-button--variant="base" data-wf-component-id="f8b8f88f-4d53-daea-faff-1d6d7cdf2822" data-wf-variant-state="base" href="/jobs" class="primary-button is-small w-inline-block">
+            <div class="button-text-mask">
+              <div data-wf-target="[[[&quot;f8b8f88f-4d53-daea-faff-1d6d7cdf2822&quot;,&quot;f8b8f88f-4d53-daea-faff-1d6d7cdf2823&quot;],[&quot;3598cbfd-14ad-1d89-953e-bf66fbd528b3&quot;]]]" class="button-text">Browse All Jobs</div>
+              <div aria-hidden="true" data-wf-target="[[[&quot;f8b8f88f-4d53-daea-faff-1d6d7cdf2822&quot;,&quot;724b01a3-01f9-0de8-3efa-7d72b03f227b&quot;],[&quot;3598cbfd-14ad-1d89-953e-bf66fbd528b3&quot;]]]" class="button-text is-hover">Browse All Jobs</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="jobs-list-collection">
+        <div class="w-dyn-list">
+          {jobs.length > 0 ? (
+            <div role="list" class="jobs-list-grid w-dyn-items">
+              {jobs.map((job) => (
+                <div reveal-anim-3="" role="listitem" class="jobs-list-item w-dyn-item">
+                  <JobCard job={job} instance={instance} tone="beige" />
+                </div>
+              ))}
+            </div>
+          ) : <EmptyState />}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

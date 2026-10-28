@@ -1,0 +1,97 @@
+---
+// Service page body: overview, stats and pricing (data from Strapi)
+import { renderBlocks } from '@/lib/blocks';
+import type { Service } from '@/lib/content';
+
+interface Props {
+  service: Service;
+}
+const { service } = Astro.props;
+---
+
+<section class="section_service-details-body">
+  <div class="container-main">
+    <div class="service-details-body-wrapper">
+      <div class="service-details-main">
+        <div reveal-anim-2="" class="service-details-rich-text w-richtext" set:html={renderBlocks(service.overview)}></div>
+        <div reveal-anim-3="" class="service-details-image-wrap">{service.detailsImage && <img src={service.detailsImage.url} loading="lazy" alt={service.detailsImage.alt} class="service-details-image" />}</div>
+        <div reveal-anim-2="" class="service-details-rich-text is-continued w-richtext" set:html={renderBlocks(service.overviewContinued)}></div>
+        <div class="service-details-block">
+          <h2 section-title="" class="service-details-block-title">The Results Our Clients See</h2>
+          <div reveal-anim-3="" class="service-details-stats">
+            {service.stats.map((stat) => (
+              <div class="service-details-stat">
+                <div data-counter="counter" class="service-details-stat-value">{stat.value}</div>
+                <div class="service-details-stat-label">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="service-details-block">
+          <h2 section-title="" class="service-details-block-title">Client Results</h2>
+          <div reveal-anim-3="" class="service-details-results-card">
+            <div class="service-details-results-media"><img src="/images/testimonial-client-remote.webp" loading="lazy" sizes="(max-width: 514px) 100vw, 514px" srcset="/images/testimonial-client-remote-p-500.webp 500w, /images/testimonial-client-remote.webp 514w" alt="Client of AlphaWave working remotely on a laptop at home" class="service-details-results-image">
+              <a href="#" class="testimonial-video-badge w-inline-block w-lightbox">
+                <div class="testimonial-video-icon w-embed"><svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.56021 1.61817L13.5934 6.01393C14.2977 6.45409 14.8858 6.82161 15.325 7.15537C15.7721 7.49514 16.1919 7.89071 16.4245 8.43342C16.7568 9.20885 16.7568 10.0866 16.4245 10.862C16.1919 11.4047 15.7721 11.8003 15.325 12.1401C14.8858 12.4738 14.2977 12.8413 13.5935 13.2815L6.56021 17.6773C5.77577 18.1676 5.12685 18.5732 4.58934 18.8443C4.04918 19.1167 3.46423 19.3388 2.83568 19.2882C1.94983 19.217 1.1378 18.7669 0.607909 18.0535C0.231926 17.5473 0.110215 16.9335 0.054956 16.3311C-3.23044e-05 15.7316 -1.73582e-05 14.9664 6.48639e-07 14.0413V5.25415C-1.73582e-05 4.32908 -3.23044e-05 3.56385 0.054956 2.96436C0.110215 2.36191 0.231926 1.74818 0.607909 1.24195C1.1378 0.52849 1.94982 0.0784285 2.83568 0.00721289C3.46424 -0.0433179 4.04918 0.178748 4.58934 0.451183C5.12685 0.722282 5.77576 1.12787 6.56021 1.61817Z" fill="white"></path>
+                  </svg>
+                </div>
+                <div class="testimonial-video-text">Client Story</div>
+                <script is:inline type="application/json" class="w-json">{
+"items": [
+{
+"url": "https://www.youtube.com/watch?v=setu9Ir1miY&list=PLPmnoMVpkxfj-DzMkYNf7LM3ebjwoY6b2",
+"originalUrl": "https://www.youtube.com/watch?v=setu9Ir1miY&list=PLPmnoMVpkxfj-DzMkYNf7LM3ebjwoY6b2",
+"width": 940,
+"height": 528,
+"thumbnailUrl": "https://i.ytimg.com/vi/setu9Ir1miY/hqdefault.jpg",
+"html": "<iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2Fsetu9Ir1miY%3Flist%3DPLPmnoMVpkxfj-DzMkYNf7LM3ebjwoY6b2&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dsetu9Ir1miY&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fsetu9Ir1miY%2Fhqdefault.jpg&type=text%2Fhtml&schema=youtube\" width=\"940\" height=\"528\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen; encrypted-media; picture-in-picture\" allowfullscreen=\"true\"></iframe>",
+"type": "video"
+}
+],
+"group": ""
+}</script>
+              </a>
+            </div>
+            <div class="service-details-results-content">
+              <div class="service-details-results-top">
+                <div class="service-details-results-logo"><img src="/images/logo-catalog-light.svg" loading="lazy" alt="Catalog" class="service-details-results-logo-image"></div>
+                <div class="service-details-results-metric">
+                  <div class="service-details-results-number">47%</div>
+                  <div class="service-details-results-metric-text">Reduction in Interviews per Hire</div>
+                </div>
+                <p class="service-details-results-quote">&quot;Working with this team has transformed our hiring process. We&#x27;ve significantly reduced recruitment costs while attracting stronger talent.&quot;</p>
+              </div>
+              <div class="service-details-results-person">
+                <div class="service-details-results-name">Marvin Black</div>
+                <div class="service-details-results-role">Head of Talent</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="service-details-sidebar">
+        <div reveal-anim-2="" class="service-details-price-card">
+          <div class="service-details-price-row">
+            <div class="service-details-price">{service.price}</div>
+            <div class="service-details-price-unit">{service.priceUnit}</div>
+          </div>
+          <div class="service-details-price-bottom">
+            <p class="service-details-price-note">{service.priceNote}</p>
+            <div class="service-details-price-button">
+              <a data-wf-target="[[[&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a0&quot;,&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a0&quot;],[&quot;649190f4-9c31-fe6e-f7dc-9d733a7f2729&quot;]]]" data-wf--primary-button--variant="on-dark" data-wf-component-id="dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a0" data-wf-variant-state="363153d3-5ec7-e799-7393-fe27ae2d82c6" href="/contact" class="primary-button w-variant-363153d3-5ec7-e799-7393-fe27ae2d82c6 w-inline-block">
+                <div class="button-text-mask">
+                  <div data-wf-target="[[[&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a0&quot;,&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a1&quot;],[&quot;649190f4-9c31-fe6e-f7dc-9d733a7f2729&quot;]]]" class="button-text">Book A Free Call</div>
+                  <div aria-hidden="true" data-wf-target="[[[&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a0&quot;,&quot;d75b11c4-9757-6f05-c59f-d5b57a7ef595&quot;],[&quot;649190f4-9c31-fe6e-f7dc-9d733a7f2729&quot;]]]" class="button-text is-hover">Book A Free Call</div>
+                </div>
+                <div data-wf-target="[[[&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a0&quot;,&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a2&quot;],[&quot;649190f4-9c31-fe6e-f7dc-9d733a7f2729&quot;]]]" class="button-icon w-embed"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M4 12H20M14 18L20 12L14 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,54 @@
+---
+// Blogs hero with the featured posts from Strapi (newest first)
+import EmptyState from '@/components/cards/EmptyState.astro';
+import { formatDate, getFeaturedPosts } from '@/lib/content';
+
+const featured = await getFeaturedPosts(2);
+---
+
+<section class="section_blogs-hero">
+  <div class="container-main">
+    <div class="blogs-hero-card">
+      <div class="hero-glow is-top-left"></div>
+      <div class="blogs-hero-glow"></div>
+      <div class="blogs-hero-content">
+        <div class="blogs-hero-heading">
+          <h1 hero-title="" class="hero-title">Hiring Advice From <span class="heading-accent is-light">Our Recruiters</span></h1>
+        </div>
+        <div class="blogs-featured-wrap">
+          <div page-load-2="" class="blogs-featured-collection w-dyn-list">
+            {featured.length > 0 ? (
+              <div role="list" class="blogs-featured-list w-dyn-items">
+                {featured.map((post) => {
+                  const href = `/blog/${post.slug}`;
+                  return (
+                    <div role="listitem" class="blogs-featured-item w-dyn-item">
+                      <div class="blogs-featured-card">
+                        <a href={href} class="blogs-featured-image-link w-inline-block"><img src={post.mainImage.url} loading="lazy" alt={post.mainImage.alt} class="blogs-featured-image" />
+                          <div class="blogs-featured-overlay"></div>
+                          <div class="blog-card-hover-overlay is-featured">
+                            <div class="blog-card-hover-pill">Read article</div>
+                          </div>
+                        </a>
+                        <div class="blogs-featured-content">
+                          <div class="blogs-featured-meta">
+                            <div class="blogs-featured-meta-text">{post.author.name}</div>
+                            <div class="blogs-featured-meta-text">-</div>
+                            <div class="blogs-featured-meta-text">{formatDate(post.publishedDate)}</div>
+                          </div>
+                          <a href={href} class="blogs-featured-title-link w-inline-block">
+                            <h2 class="blogs-featured-title">{post.title}</h2>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : <EmptyState />}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

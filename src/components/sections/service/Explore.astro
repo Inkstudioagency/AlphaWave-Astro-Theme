@@ -1,0 +1,30 @@
+---
+// "Explore services" on service pages: the first two services (Strapi sort order)
+import ServiceCard from '@/components/cards/ServiceCard.astro';
+import EmptyState from '@/components/cards/EmptyState.astro';
+import { getServices } from '@/lib/content';
+
+const services = (await getServices()).slice(0, 2);
+const instance = ['3e4ddfc1-b027-9f19-33ee-6cc626f777f9_instance-0'];
+---
+
+<section class="section_service-details-explore">
+  <div class="container-main">
+    <div class="service-details-explore-wrapper">
+      <h2 section-title="" class="heading-style-2">Explore More <span class="heading-accent">Services</span></h2>
+      <div class="service-details-explore-list-wrap">
+        <div class="service-details-explore-collection w-dyn-list">
+          {services.length > 0 ? (
+            <div role="list" class="service-details-explore-list w-dyn-items">
+              {services.map((service) => (
+                <div reveal-anim-3="" role="listitem" class="service-details-explore-item w-dyn-item">
+                  <ServiceCard service={service} instance={instance} />
+                </div>
+              ))}
+            </div>
+          ) : <EmptyState />}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

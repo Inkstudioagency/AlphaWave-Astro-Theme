@@ -1,0 +1,77 @@
+---
+import config from '@/config/config.json';
+import menu from '@/config/menu.json';
+import social from '@/config/social.json';
+import SocialIcon from '@/components/ui/SocialIcon.astro';
+import { currentLinkProps } from '@/lib/webflow';
+
+interface Props {
+  /** Webflow page id; webflow.js attaches it to newsletter submissions */
+  wfPage: string;
+}
+
+const { wfPage } = Astro.props;
+const { pathname } = Astro.url;
+const { footer } = config;
+const [navColumn, othersColumn] = menu.footer;
+---
+
+<footer class="section_footer">
+  <div class="footer-wrapper">
+    <div class="footer-glow"></div>
+    <div class="footer-grid">
+      <div reveal-anim-2="" class="footer-column">
+        <div class="footer-column-inner">
+          <div class="footer-column-title">{navColumn.title}</div>
+          <div class="footer-link-list">
+            {navColumn.links.map((link) => <a href={link.url} {...currentLinkProps(link.url, pathname, 'footer-link')}>{link.name}</a>)}
+          </div>
+        </div>
+      </div>
+      <div reveal-anim-3="" id="w-node-_1cc1172d-f764-707e-5363-36426cbaecda-6cbaecc7" class="footer-center">
+        <div class="footer-newsletter">
+          <div class="footer-newsletter-title">{footer.newsletter_title}</div>
+          <div class="footer-form w-form">
+            <form method="get" name="" data-name="Newsletter Form" class="footer-form" data-wf-page-id={wfPage} data-wf-element-id="1cc1172d-f764-707e-5363-36426cbaecdf"><input class="footer-input w-input" maxlength="256" name="Email" data-name="Email" aria-label="footer-input" placeholder="Enter your email address" type="email" id="field" required=""><input type="submit" data-wait="Please wait..." class="primary-button is-form w-button" value="Subscribe"></form>
+            <div class="form-message w-form-done">
+              <div>Thanks for subscribing! Check your inbox for hiring insights.</div>
+            </div>
+            <div class="form-message is-error w-form-fail">
+              <div>Please enter a valid email address and try again.</div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-chips">
+          {footer.chips.map((chip, i) => <div class={`footer-chip is-${i + 1}`}>{chip}</div>)}
+        </div>
+      </div>
+      <div reveal-anim-4="" class="footer-column">
+        <div class="footer-column-inner">
+          <div class="footer-column-title">{othersColumn.title}</div>
+          <div class="footer-link-list">
+            {othersColumn.links.map((link) => <a href={link.url} {...currentLinkProps(link.url, pathname, 'footer-link')}>{link.name}</a>)}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div reveal-anim-2="" class="footer-wordmark-block">
+      <div class="footer-wordmark-text">{footer.wordmark}</div>
+    </div>
+    <div class="footer-bottom-bar">
+      <div class="container-main">
+        <div class="footer-bottom-inner">
+          <div class="footer-bottom-text">Copyright © <span class="footer-text-strong">{footer.copyright_name}</span></div>
+          <div class="footer-bottom-text is-light">Designed by <a href={footer.designer.link} target="_blank"><span class="footer-inline-link">{footer.designer.name}</span></a> - Powered by <a href={footer.powered_by.link} target="_blank" class="footer-inline-link">{footer.powered_by.name}</a>
+          </div>
+          <div class="footer-socials">
+            {social.main.map((item) => (
+              <a aria-label={item.name} href={item.link} target="_blank" class="footer-social w-inline-block">
+                <div class="footer-social-svg w-embed"><SocialIcon icon={item.icon} /></div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

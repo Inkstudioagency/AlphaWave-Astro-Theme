@@ -1,0 +1,98 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jobs",
+  "info": {
+    "singularName": "job",
+    "pluralName": "jobs",
+    "displayName": "Job",
+    "description": "Open positions listed on /jobs and the home page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "company": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::company.company",
+      "inversedBy": "jobs"
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "jobType": {
+      "type": "string",
+      "required": true
+    },
+    "workMode": {
+      "type": "string",
+      "required": true
+    },
+    "department": {
+      "type": "string",
+      "required": true
+    },
+    "experience": {
+      "type": "string",
+      "required": true
+    },
+    "monthlySalary": {
+      "type": "string",
+      "required": true
+    },
+    "salaryRange": {
+      "type": "string",
+      "required": true
+    },
+    "postedDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "featuredOnHome": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "showInRelated": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "shortSummary": {
+      "type": "text",
+      "required": true
+    },
+    "overview": {
+      "type": "blocks"
+    },
+    "responsibilities": {
+      "type": "blocks"
+    },
+    "requiredQualifications": {
+      "type": "blocks"
+    },
+    "niceToHave": {
+      "type": "blocks"
+    },
+    "whatWeOffer": {
+      "type": "blocks"
+    },
+    "contactEmail": {
+      "type": "email"
+    },
+    "contactPhone": {
+      "type": "string"
+    }
+  }
+}

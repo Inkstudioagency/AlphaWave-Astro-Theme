@@ -1,0 +1,44 @@
+---
+// Home jobs: jobs flagged "Featured on home" in Strapi, newest first
+import JobCard from '@/components/cards/JobCard.astro';
+import EmptyState from '@/components/cards/EmptyState.astro';
+import { getHomeJobs } from '@/lib/content';
+
+const jobs = await getHomeJobs(3);
+const instance = ['6d8a8716-08dd-bf21-6f6c-11326d86cf90_instance-0'];
+---
+
+<section class="section_home-jobs">
+  <div class="w-layout-blockcontainer container-main w-container">
+    <div class="home-jobs-wrapper">
+      <div class="section-title-center">
+        <h2 section-title="" class="heading-style-2 is-jobs-title">What Are You <span class="heading-accent">Looking For?</span></h2>
+      </div>
+      <div class="jobs-grid">
+        <div reveal-anim-2="" class="jobs-image-frame"><img src="/images/jobs-interview.webp" loading="lazy" sizes="100vw" srcset="/images/jobs-interview-p-500.webp 500w, /images/jobs-interview-p-800.webp 800w, /images/jobs-interview.webp 1026w" alt="Hiring manager reviewing a candidate&#x27;s resume during an interview" class="jobs-image"></div>
+        <div class="home-jobs-collection w-dyn-list">
+          {jobs.length > 0 ? (
+            <div role="list" class="job-list w-dyn-items">
+              {jobs.map((job) => (
+                <div reveal-anim-3="" role="listitem" class="w-dyn-item">
+                  <JobCard job={job} instance={instance} layout="compact" />
+                </div>
+              ))}
+            </div>
+          ) : <EmptyState />}
+        </div>
+      </div>
+      <div reveal-anim-2="" class="button-wrap">
+        <a data-wf-target="[[[&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a0&quot;,&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a0&quot;],[&quot;319b9f07-c8a8-1efd-8342-fae2f9156efa&quot;]]]" data-wf--primary-button--variant="base" data-wf-component-id="dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a0" data-wf-variant-state="base" href="/jobs" class="primary-button w-inline-block">
+          <div class="button-text-mask">
+            <div data-wf-target="[[[&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a0&quot;,&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a1&quot;],[&quot;319b9f07-c8a8-1efd-8342-fae2f9156efa&quot;]]]" class="button-text">Browse Jobs</div>
+            <div aria-hidden="true" data-wf-target="[[[&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a0&quot;,&quot;d75b11c4-9757-6f05-c59f-d5b57a7ef595&quot;],[&quot;319b9f07-c8a8-1efd-8342-fae2f9156efa&quot;]]]" class="button-text is-hover">Browse Jobs</div>
+          </div>
+          <div data-wf-target="[[[&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a0&quot;,&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a2&quot;],[&quot;319b9f07-c8a8-1efd-8342-fae2f9156efa&quot;]]]" class="button-icon w-embed"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4 12H20M14 18L20 12L14 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

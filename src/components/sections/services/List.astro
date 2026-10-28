@@ -1,0 +1,56 @@
+---
+// Services list: every service from Strapi in sort order
+import EmptyState from '@/components/cards/EmptyState.astro';
+import { getServices } from '@/lib/content';
+
+const services = await getServices();
+---
+
+<section class="section_services-list">
+  <div class="container-main">
+    <div class="services-list-wrapper">
+      <div class="section-title-center">
+        <h2 section-title="" class="heading-style-2">Services That Power <br><span class="heading-accent">Your Hiring</span></h2>
+      </div>
+      <div reveal-anim-3="" class="services-list-collection-wrap">
+        <div class="services-list-collection w-dyn-list">
+          {services.length > 0 ? (
+            <div role="list" class="services-list-list w-dyn-items">
+              {services.map((service) => {
+                const href = `/service/${service.slug}`;
+                return (
+                  <div role="listitem" class="services-list-item sticky w-dyn-item">
+                    <div class="services-list-card border">
+                      <div class="services-list-info"><img src={service.icon.url} loading="lazy" alt="" class="services-list-icon" />
+                        <div class="services-list-text">
+                          <a href={href} class="services-list-title-link w-inline-block">
+                            <h3 class="services-list-title">{service.name}</h3>
+                          </a>
+                          <p class="services-list-description">{service.shortDescription}</p>
+                        </div>
+                      </div>
+                      <a href={href} class="services-list-image-link w-inline-block"><img src={service.mainImage.url} loading="lazy" alt={service.mainImage.alt} class="services-list-image" /></a>
+                      <div class="services-list-offerings">
+                        <div class="services-list-offerings-title">Key offerings:</div>
+                        <div class="services-list-offerings-list">
+                          {service.offerings.map((offering) => (
+                            <div class="services-list-offering">
+                              <div class="services-list-tick w-embed"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                  <path d="M5 14L8.5 17.5L19 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg></div>
+                              <div class="services-list-offering-text">{offering}</div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : <EmptyState />}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/sections/job/Hero.astro';
+import Body from '@/components/sections/job/Body.astro';
+import Related from '@/components/sections/job/Related.astro';
+
+export async function getStaticPaths() {
+  const jobs = await getCollection('jobs');
+  return jobs.map(({ data }) => ({ params: { slug: data.slug }, props: { job: data } }));
+}
+
+const { job } = Astro.props;
+---
+
+<BaseLayout wfPage="6ac538657f1131b8e317efd2" title={job.title} description={job.shortSummary} image={job.company.logo?.url}>
+  <Hero job={job} />
+  <Body job={job} />
+  <Related />
+</BaseLayout>

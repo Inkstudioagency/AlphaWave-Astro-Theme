@@ -1,0 +1,31 @@
+---
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import { currentLinkProps } from '@/lib/webflow';
+import type { Service } from '@/lib/content';
+
+interface Props {
+  service: Service;
+  /** Webflow component instance of the card's button */
+  instance: string[];
+  /** "on-dark" on the home slider, "base" on service pages */
+  buttonVariant?: 'base' | 'on-dark';
+  /** The home slider shows the image as decoration (empty alt) */
+  decorativeImage?: boolean;
+}
+
+const { service, instance, buttonVariant = 'base', decorativeImage = false } = Astro.props;
+const href = `/service/${service.slug}`;
+---
+
+<div class="service-card"><img src={service.mainImage.url} loading="lazy" alt={decorativeImage ? '' : service.mainImage.alt} class="service-card-image" />
+  <div class="service-card-overlay"></div>
+  <div class="service-card-hover-overlay"></div>
+  <div class="service-card-content">
+    <a href={href} {...currentLinkProps(href, Astro.url.pathname, 'service-card-title-link w-inline-block')}>
+      <h3 class="service-card-title">{service.cardTitle}</h3>
+    </a>
+    <div class="service-card-button">
+      <PrimaryButton href={href} label="Get Started" instance={instance} variant={buttonVariant} />
+    </div>
+  </div>
+</div>

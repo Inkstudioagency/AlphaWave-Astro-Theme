@@ -1,0 +1,28 @@
+{
+  "site": {
+    "title": "AlphaWave",
+    "base_url": "https://example.com",
+    "trailing_slash": false,
+    "logo": "/images/alphawave-logo.svg",
+    "logo_white": "/images/alphawave-logo-white.svg",
+    "logo_alt": "AlphaWave logo"
+  },
+  "metadata": {
+    "meta_title": "AlphaWave - Astro recruitment agency template",
+    "meta_description": "AlphaWave helps growing companies hire faster with expert recruiters, pre-screened candidates and flexible plans. Find the right people and build a great team.",
+    "meta_image": "/images/og-image.webp",
+    "meta_author": "Ink Studio"
+  },
+  "navigation_buttons": [
+    { "label": "Get Started", "link": "/contact", "variant": "primary" },
+    { "label": "Book a Call", "link": "/contact", "variant": "secondary" }
+  ],
+  "footer": {
+    "newsletter_title": "Join our mailing list for the latest updates",
+    "chips": ["Find Talent", "Hire Faster", "Top Talent", "Tech Roles", "Remote Ready", "Sales Teams", "Design Pros"],
+    "wordmark": "AlphaWave",
+    "copyright_name": "AlphaWave",
+    "designer": { "name": "Ink Studio", "link": "https://www.inks.studio/" },
+    "powered_by": { "name": "Astro", "link": "https://astro.build" }
+  }
+}

@@ -1,0 +1,29 @@
+---
+// Blogs grid: every non-featured post from Strapi, oldest first
+import BlogCard from '@/components/cards/BlogCard.astro';
+import EmptyState from '@/components/cards/EmptyState.astro';
+import { getGridPosts } from '@/lib/content';
+
+const posts = await getGridPosts();
+---
+
+<section class="section_blogs-list">
+  <div class="container-main">
+    <div class="blogs-list-wrapper">
+      <h2 section-title="" class="heading-style-2">Latest News &amp; <span class="heading-accent">Insights</span></h2>
+      <div class="blogs-list-wrap">
+        <div class="home-blog-collection w-dyn-list">
+          {posts.length > 0 ? (
+            <div role="list" class="home-blog-list w-dyn-items">
+              {posts.map((post) => (
+                <div reveal-anim-3="" role="listitem" class="home-blog-item w-dyn-item">
+                  <BlogCard post={post} titleVariant="is-blogs-grid" />
+                </div>
+              ))}
+            </div>
+          ) : <EmptyState />}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

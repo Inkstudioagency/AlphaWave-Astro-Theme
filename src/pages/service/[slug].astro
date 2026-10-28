@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/sections/service/Hero.astro';
+import Body from '@/components/sections/service/Body.astro';
+import Explore from '@/components/sections/service/Explore.astro';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.map(({ data }) => ({ params: { slug: data.slug }, props: { service: data } }));
+}
+
+const { service } = Astro.props;
+---
+
+<BaseLayout wfPage="6ac473a663f6dda247a67eae" title={service.name} description={service.shortDescription} image={service.mainImage.url}>
+  <Hero service={service} />
+  <Body service={service} />
+  <Explore />
+</BaseLayout>

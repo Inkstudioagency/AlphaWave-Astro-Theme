@@ -1,0 +1,93 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "Service",
+    "description": "Recruitment services listed on /services and the home slider"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "cardTitle": {
+      "type": "string",
+      "required": true
+    },
+    "sortOrder": {
+      "type": "integer",
+      "default": 0,
+      "required": true
+    },
+    "shortDescription": {
+      "type": "text",
+      "required": true
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "required": true
+    },
+    "mainImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "required": true
+    },
+    "detailsImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "offerings": {
+      "type": "component",
+      "component": "shared.list-item",
+      "repeatable": true,
+      "max": 5
+    },
+    "price": {
+      "type": "string"
+    },
+    "priceUnit": {
+      "type": "string"
+    },
+    "priceNote": {
+      "type": "text"
+    },
+    "author": {
+      "type": "component",
+      "component": "shared.person",
+      "repeatable": false
+    },
+    "overview": {
+      "type": "blocks"
+    },
+    "stats": {
+      "type": "component",
+      "component": "shared.stat",
+      "repeatable": true,
+      "max": 3
+    },
+    "overviewContinued": {
+      "type": "blocks"
+    }
+  }
+}

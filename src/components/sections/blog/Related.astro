@@ -1,0 +1,29 @@
+---
+// "More News & Insights" on articles: featured posts from Strapi, newest first
+import BlogCard from '@/components/cards/BlogCard.astro';
+import EmptyState from '@/components/cards/EmptyState.astro';
+import { getFeaturedPosts } from '@/lib/content';
+
+const posts = await getFeaturedPosts(2);
+---
+
+<section class="section_blog-details-related">
+  <div class="container-main">
+    <div class="blog-details-related-wrapper">
+      <h2 section-title="" class="heading-style-2">More News &amp; <span class="heading-accent">Insights</span></h2>
+      <div class="blog-details-related-wrap">
+        <div class="home-blog-collection w-dyn-list">
+          {posts.length > 0 ? (
+            <div role="list" class="blog-details-related-list w-dyn-items">
+              {posts.map((post) => (
+                <div reveal-anim-3="" role="listitem" class="home-blog-item w-dyn-item">
+                  <BlogCard post={post} titleVariant="is-related" />
+                </div>
+              ))}
+            </div>
+          ) : <EmptyState />}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

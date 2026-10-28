@@ -1,0 +1,51 @@
+---
+import LinkButton from '@/components/ui/LinkButton.astro';
+import { currentLinkProps } from '@/lib/webflow';
+import type { Job } from '@/lib/content';
+
+interface Props {
+  job: Job;
+  /** Webflow component instance of the "Apply Now" button */
+  instance: string[];
+  /** "compact" (home page) shows only the title; "full" adds the title link and company name */
+  layout?: 'compact' | 'full';
+  /** "beige" is used for related jobs on job pages */
+  tone?: 'default' | 'beige';
+}
+
+const { job, instance, layout = 'full', tone = 'default' } = Astro.props;
+const href = `/job/${job.slug}`;
+const logo = job.company.logo;
+---
+
+<div class:list={['job-card', tone === 'beige' && 'is-beige']}>
+  <div class="job-card-top">
+    <div class="job-card-title-wrap">
+      <div class:list={['job-logo', tone === 'beige' && 'is-white']}>{logo && <img src={logo.url} loading="lazy" alt={logo.alt || job.company.name} class="job-logo-image" />}</div>
+      {layout === 'compact' ? (
+        <div class="job-title-link">
+          <h3 class="job-title">{job.title}</h3>
+        </div>
+      ) : (
+        <div class="job-card-heading">
+          <a href={href} {...currentLinkProps(href, Astro.url.pathname, 'job-title-link w-inline-block')}>
+            <h3 class="job-title">{job.title}</h3>
+          </a>
+          <div class="job-company">{job.company.name}</div>
+        </div>
+      )}
+    </div>
+    <div class="job-salary">{job.monthlySalary}</div>
+  </div>
+  <div class="job-card-bottom">
+    <div class="job-tags">
+      <div class="job-tag">{job.experience}</div>
+      <div class="job-tag">{job.department}</div>
+      <div class="job-tag">{job.workMode}</div>
+    </div>
+    <div class="job-link-wrap">
+      <LinkButton href={href} label="Apply Now" instance={instance} />
+    </div>
+  </div>
+  <div class="job-card-overlay"></div>
+</div>

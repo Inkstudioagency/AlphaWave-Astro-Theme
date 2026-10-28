@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_people",
+  "info": {
+    "displayName": "Person",
+    "icon": "user",
+    "description": "Author shown on blog posts and service pages"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "role": {
+      "type": "string"
+    },
+    "photo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}

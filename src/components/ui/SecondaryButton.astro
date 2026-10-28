@@ -1,0 +1,28 @@
+---
+import { WF_COMPONENTS, currentLinkProps, wfTarget } from '@/lib/webflow';
+
+interface Props {
+  href: string;
+  label: string;
+  instance: string[];
+  size?: 'small' | 'default';
+}
+
+const { href, label, instance, size = 'small' } = Astro.props;
+const c = WF_COMPONENTS.secondaryButton;
+const classes = ['secondary-button', size === 'small' && 'is-small', 'w-inline-block'].filter(Boolean).join(' ');
+const link = currentLinkProps(href, Astro.url.pathname, classes);
+---
+
+<a
+  data-wf-target={wfTarget(c.id, c.id, instance)}
+  data-wf-component-id={c.id}
+  data-wf-variant-state="base"
+  href={href}
+  {...link}
+>
+  <div class="button-text-mask">
+    <div data-wf-target={wfTarget(c.id, c.text, instance)} class="button-text">{label}</div>
+    <div aria-hidden="true" data-wf-target={wfTarget(c.id, c.hoverText, instance)} class="button-text is-hover">{label}</div>
+  </div>
+</a>

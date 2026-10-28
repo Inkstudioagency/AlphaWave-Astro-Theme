@@ -1,0 +1,67 @@
+---
+// Home services slider: eight slides cycling through the services (from Strapi) in sort order
+import ServiceCard from '@/components/cards/ServiceCard.astro';
+import EmptyState from '@/components/cards/EmptyState.astro';
+import { getServices } from '@/lib/content';
+
+const services = await getServices();
+// Webflow component instance of each slide's button
+const slideInstances = [
+  'c4a9f3ba-1b2a-8c91-d387-4f4a176f402f_instance-0',
+  '4cd916a8-eaaa-8f1d-b07d-db1773e001ee_instance-0',
+  'c253f305-faad-15e4-c2bd-89753f96405e_instance-0',
+  'c2d4a21a-038f-effa-fd7c-c18a187e544b_instance-0',
+  '9c11957d-311e-7faa-f371-eb18897b9e4e_instance-0',
+  '4f3ae539-0e8b-8625-7d60-8b3f4b03fa60_instance-0',
+  'fefcb622-1653-8509-32b2-396f0cb8207d_instance-0',
+  'a23d20a2-2f8a-3b4a-67b0-f770f9b59eba_instance-0',
+];
+const slides = services.length ? slideInstances.map((instance, i) => ({ instance, service: services[i % services.length] })) : [];
+---
+
+<section class="section_home-services">
+  <div class="w-layout-blockcontainer container-main w-container">
+    <div class="home-services-wrapper">
+      <div class="services-header">
+        <h2 section-title="" class="heading-style-2 text-color-white">Our Services For Your <span class="heading-accent is-light">Growth</span></h2>
+      </div>
+      <div class="services-slider-wrap">
+        <div data-delay="4000" data-animation="slide" class="services-slider w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true" reveal-anim-3="">
+          <div class="services-slider-mask w-slider-mask">
+            {slides.map(({ service, instance }) => (
+              <div class="service-slide w-slide">
+                <div class="service-slide-collection w-dyn-list">
+                  <div role="list" class="service-slide-list w-dyn-items">
+                    <div role="listitem" class="service-slide-item w-dyn-item">
+                      <ServiceCard service={service} instance={[instance]} buttonVariant="on-dark" decorativeImage />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+            {slides.length === 0 && (
+              <div class="service-slide w-slide">
+                <div class="service-slide-collection w-dyn-list">
+                  <EmptyState />
+                </div>
+              </div>
+            )}
+          </div>
+          <div class="services-arrow is-left w-slider-arrow-left">
+            <div class="slider-arrow-icon w-embed"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5.5 12.002H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M11 18.002C11 18.002 5 13.583 5 12.002C5 10.421 11 6.002 11 6.002" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg></div>
+          </div>
+          <div class="services-arrow w-slider-arrow-right">
+            <div class="slider-arrow-icon w-embed"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M18.5 12.002H5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M13 18.002C13 18.002 19 13.583 19 12.002C19 10.421 13 6.002 13 6.002" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg></div>
+          </div>
+          <div class="slider-nav-hidden w-slider-nav w-round w-num"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

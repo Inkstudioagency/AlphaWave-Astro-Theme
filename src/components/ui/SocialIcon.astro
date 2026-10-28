@@ -1,0 +1,31 @@
+---
+interface Props {
+  icon: 'facebook' | 'x' | 'instagram' | 'linkedin' | string;
+}
+const { icon } = Astro.props;
+---
+
+{icon === 'facebook' && (
+  <svg width="100%" height="100%" viewBox="0 0 15.24 15.24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M11.4278 1.26869H9.523C8.68105 1.26869 7.87357 1.60316 7.27822 2.19851C6.68287 2.79387 6.3484 3.60134 6.3484 4.4433V6.34806H4.44364V8.88774H6.3484V13.9671H8.88808V8.88774H10.7928L11.4278 6.34806H8.88808V4.4433C8.88808 4.27491 8.95498 4.11341 9.07405 3.99434C9.19312 3.87527 9.35461 3.80838 9.523 3.80838H11.4278V1.26869Z" stroke="currentColor" stroke-width="1.14" stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+)}
+{icon === 'x' && (
+  <svg width="100%" height="100%" viewBox="-1.33 -1.33 15.24 15.24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M0.571431 12L5.36406 7.20737M12 0.571429L7.20738 5.36406M5.36406 7.20737L8.8254 12H12L7.20738 5.36406L3.74603 0.571429H0.571431L5.36406 7.20737Z" stroke="currentColor" stroke-width="1.14" stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+)}
+{icon === 'instagram' && (
+  <svg width="100%" height="100%" viewBox="0 0 15.24 15.24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M10.7938 1.26869H4.4446C2.69131 1.26869 1.27 2.69001 1.27 4.4433V10.7925C1.27 12.5458 2.69131 13.9671 4.4446 13.9671H10.7938C12.5471 13.9671 13.9684 12.5458 13.9684 10.7925V4.4433C13.9684 2.69001 12.5471 1.26869 10.7938 1.26869Z" stroke="currentColor" stroke-width="1.14" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M10.1575 7.21933C10.2358 7.74774 10.1456 8.28741 9.89953 8.76156C9.6535 9.23572 9.26422 9.62023 8.78706 9.86039C8.30991 10.1006 7.76917 10.1842 7.24177 10.0993C6.71436 10.0144 6.22715 9.76542 5.84942 9.38769C5.47169 9.00996 5.22269 8.52274 5.13782 7.99534C5.05295 7.46794 5.13655 6.9272 5.37671 6.45005C5.61688 5.97289 6.00139 5.58361 6.47554 5.33758C6.9497 5.09155 7.48937 5.00129 8.01778 5.07965C8.55678 5.15958 9.05578 5.41074 9.44107 5.79603C9.82637 6.18133 10.0775 6.68033 10.1575 7.21933Z" stroke="currentColor" stroke-width="1.14" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M11.11 4.12584H11.1167" stroke="currentColor" stroke-width="1.14" stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+)}
+{icon === 'linkedin' && (
+  <svg width="100%" height="100%" viewBox="0 0 15.24 15.24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M10.1585 5.07822C11.1688 5.07822 12.1378 5.47958 12.8522 6.194C13.5666 6.90843 13.968 7.87739 13.968 8.88774V13.3322H11.4283V8.88774C11.4283 8.55096 11.2945 8.22797 11.0564 7.98983C10.8183 7.75169 10.4953 7.6179 10.1585 7.6179C9.8217 7.6179 9.49871 7.75169 9.26057 7.98983C9.02243 8.22797 8.88864 8.55096 8.88864 8.88774V13.3322H6.34896V8.88774C6.34896 7.87739 6.75032 6.90843 7.46474 6.194C8.17917 5.47958 9.14813 5.07822 10.1585 5.07822Z" stroke="currentColor" stroke-width="1.14" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M3.81052 5.71438H1.27083V13.3334H3.81052V5.71438Z" stroke="currentColor" stroke-width="1.14" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M2.54067 3.80838C3.24199 3.80838 3.81052 3.23985 3.81052 2.53854C3.81052 1.83722 3.24199 1.26869 2.54067 1.26869C1.83936 1.26869 1.27083 1.83722 1.27083 2.53854C1.27083 3.23985 1.83936 3.80838 2.54067 3.80838Z" stroke="currentColor" stroke-width="1.14" stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+)}

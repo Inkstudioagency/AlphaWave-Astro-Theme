@@ -1,0 +1,97 @@
+---
+// Job page hero (job + related company from Strapi)
+import type { Job } from '@/lib/content';
+
+interface Props {
+  job: Job;
+}
+const { job } = Astro.props;
+---
+
+<section class="section_job-details-hero">
+  <div class="container-main">
+    <div class="job-details-hero-card">
+      <div class="hero-glow"></div>
+      <div class="jobs-hero-glow"></div>
+      <div class="job-details-hero-content">
+        <div class="job-details-hero-top">
+          <div class="job-details-hero-title-wrap">
+            <div page-load-1="" class="job-details-logo">{job.company.logo && <img src={job.company.logo.url} loading="lazy" alt={job.company.logo.alt || job.company.name} class="job-logo-image" />}</div>
+            <div class="job-details-heading">
+              <h1 hero-title="" class="job-details-title">{job.title}</h1>
+              <div class="job-details-company-row">
+                <div class="job-details-company">{job.company.name}</div>
+                <div class="job-details-dot">•</div>
+                <div class="job-details-company">{job.company.companyType}</div>
+              </div>
+            </div>
+          </div>
+          <div page-load-2="" class="job-details-hero-button">
+            <a data-wf-target="[[[&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a0&quot;,&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a0&quot;],[&quot;d9749fd1-a56d-ce35-522c-ec1b25fa9cb2&quot;]]]" data-wf--primary-button--variant="on-dark" data-wf-component-id="dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a0" data-wf-variant-state="363153d3-5ec7-e799-7393-fe27ae2d82c6" href="/contact" class="primary-button w-variant-363153d3-5ec7-e799-7393-fe27ae2d82c6 w-inline-block">
+              <div class="button-text-mask">
+                <div data-wf-target="[[[&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a0&quot;,&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a1&quot;],[&quot;d9749fd1-a56d-ce35-522c-ec1b25fa9cb2&quot;]]]" class="button-text">Apply Now</div>
+                <div aria-hidden="true" data-wf-target="[[[&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a0&quot;,&quot;d75b11c4-9757-6f05-c59f-d5b57a7ef595&quot;],[&quot;d9749fd1-a56d-ce35-522c-ec1b25fa9cb2&quot;]]]" class="button-text is-hover">Apply Now</div>
+              </div>
+              <div data-wf-target="[[[&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a0&quot;,&quot;dea1c01a-f24f-0134-f6ba-f9f2cd9dc9a2&quot;],[&quot;d9749fd1-a56d-ce35-522c-ec1b25fa9cb2&quot;]]]" class="button-icon w-embed"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M4 12H20M14 18L20 12L14 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg></div>
+            </a>
+          </div>
+        </div>
+        <div page-load-3="" class="job-details-meta">
+          <div class="job-details-meta-item">
+            <div class="job-details-meta-icon">
+              <div class="jobs-icon-embed w-embed"><svg width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M18.16 28.49C17.58 29.03 16.81 29.33 16 29.33C15.2 29.33 14.42 29.03 13.85 28.49C8.55 23.5 1.45 17.93 4.92 9.84C6.79 5.46 11.28 2.67 16 2.67C20.73 2.67 25.22 5.46 27.09 9.84C30.54 17.92 23.47 23.52 18.16 28.49Z" stroke="currentColor" stroke-width="1.33"></path>
+                  <path d="M20.67 14.67C20.67 17.24 18.58 19.33 16 19.33C13.42 19.33 11.33 17.24 11.33 14.67C11.33 12.09 13.42 10 16 10C18.58 10 20.67 12.09 20.67 14.67Z" stroke="currentColor" stroke-width="1.33"></path>
+                </svg></div>
+            </div>
+            <div class="job-details-meta-text">
+              <div class="job-details-meta-label">Location</div>
+              <div class="job-details-meta-value">{job.location}</div>
+            </div>
+          </div>
+          <div class="job-details-meta-item">
+            <div class="job-details-meta-icon">
+              <div class="jobs-icon-embed w-embed"><svg width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M16 29.33C23.36 29.33 29.33 23.36 29.33 16C29.33 8.64 23.36 2.67 16 2.67C8.64 2.67 2.67 8.64 2.67 16C2.67 23.36 8.64 29.33 16 29.33Z" stroke="currentColor" stroke-width="1.33"></path>
+                  <path d="M16 10.67V16L18.67 18.67" stroke="currentColor" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg></div>
+            </div>
+            <div class="job-details-meta-text">
+              <div class="job-details-meta-label">Job Type</div>
+              <div class="job-details-meta-value">{job.jobType}</div>
+            </div>
+          </div>
+          <div class="job-details-meta-item">
+            <div class="job-details-meta-icon">
+              <div class="jobs-icon-embed w-embed"><svg width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M19.19 4L18.86 3.72C17.21 2.31 14.79 2.31 13.14 3.72L12.81 4C11.95 4.73 10.89 5.17 9.77 5.26L9.34 5.29C7.18 5.46 5.46 7.18 5.29 9.34L5.26 9.77C5.17 10.89 4.73 11.95 4 12.81L3.72 13.14C2.31 14.79 2.31 17.21 3.72 18.86L4 19.19C4.73 20.05 5.17 21.11 5.26 22.23L5.29 22.66C5.46 24.82 7.18 26.53 9.34 26.71L9.77 26.74C10.89 26.83 11.95 27.27 12.81 28L13.14 28.28C14.79 29.68 17.21 29.68 18.86 28.28L19.19 28C20.05 27.27 21.11 26.83 22.23 26.74L22.66 26.71C24.82 26.53 26.53 24.82 26.71 22.66L26.74 22.23C26.83 21.11 27.27 20.05 28 19.19L28.28 18.86C29.68 17.21 29.68 14.79 28.28 13.14L28 12.81C27.27 11.95 26.83 10.89 26.74 9.77L26.71 9.34C26.53 7.18 24.82 5.46 22.66 5.29L22.23 5.26C21.11 5.17 20.05 4.73 19.19 4Z" stroke="currentColor" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <path d="M12 18.67C12 20.19 13.67 21.33 16 21.33C18.33 21.33 20 20.54 20 18.57C20 16.59 18.67 15.8 16 15.8C13.33 15.8 12.33 14.96 12.33 13.43C12.33 11.9 13.97 10.67 16 10.67C17.67 10.67 19.08 11.51 19.52 12.67" stroke="currentColor" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <path d="M16 8.67V10.67M16 23.33V21.33" stroke="currentColor" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg></div>
+            </div>
+            <div class="job-details-meta-text">
+              <div class="job-details-meta-label">Salary Range</div>
+              <div class="job-details-meta-value">{job.salaryRange}</div>
+            </div>
+          </div>
+          <div class="job-details-meta-item">
+            <div class="job-details-meta-icon">
+              <div class="jobs-icon-embed w-embed"><svg width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M2.67 11.33L2.67 18.66C2.66 23.06 2.66 25.27 4.03 26.63C5.4 28 7.6 28 12 28L20 28C24.4 28 26.6 28 27.97 26.63C29.33 25.27 29.33 23.07 29.33 18.67L29.34 11.33" stroke="currentColor" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <path d="M11.33 8.67C11.33 6.79 11.33 5.86 11.78 5.19C11.98 4.89 12.23 4.64 12.52 4.45C13.19 4 14.13 4 16 4C17.87 4 18.81 4 19.48 4.45C19.77 4.64 20.02 4.89 20.22 5.19C20.67 5.86 20.67 6.79 20.67 8.67" stroke="currentColor" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <path d="M26.66 8.67L5.33 8.67C3.86 8.67 2.67 9.86 2.67 11.33C2.67 14.28 5.05 16.67 8 16.67H24C26.94 16.67 29.33 14.28 29.33 11.33C29.33 9.86 28.14 8.67 26.66 8.67Z" stroke="currentColor" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <path d="M13.33 16.67V18C13.33 18.62 13.33 18.93 13.4 19.18C13.58 19.87 14.12 20.41 14.81 20.6C15.07 20.67 15.38 20.67 16 20.67C16.62 20.67 16.93 20.67 17.18 20.6C17.87 20.41 18.41 19.87 18.6 19.18C18.66 18.93 18.66 18.62 18.66 18V16.67" stroke="currentColor" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg></div>
+            </div>
+            <div class="job-details-meta-text">
+              <div class="job-details-meta-label">Experience Level</div>
+              <div class="job-details-meta-value">{job.experience}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

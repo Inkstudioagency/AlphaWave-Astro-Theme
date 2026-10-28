@@ -1,0 +1,41 @@
+---
+// Blog article body: excerpt, rich text and gallery (data from Strapi)
+import { renderBlocks } from '@/lib/blocks';
+import type { BlogPost } from '@/lib/content';
+
+interface Props {
+  post: BlogPost;
+}
+const { post } = Astro.props;
+---
+
+<section class="section_blog-details-body">
+  <div class="container-main">
+    <div class="blog-details-body-wrapper">
+      <div class="blog-details-main">
+        <div class="blog-details-intro">
+          <p reveal-anim-2="" class="blog-details-lead">{post.excerpt}</p>
+          <div reveal-anim-2="" class="blog-details-rich-text w-richtext" set:html={renderBlocks(post.body)}></div>
+        </div>
+        <div reveal-anim-3="" class="blog-details-gallery">{post.gallery.map((image) => <img src={image.url} loading="lazy" alt={image.alt} class="blog-details-gallery-image" />)}</div>
+        <div reveal-anim-2="" class="blog-details-rich-text w-richtext" set:html={renderBlocks(post.bodyContinued)}></div>
+      </div>
+      <div class="blog-details-sidebar">
+        <div reveal-anim-3="" class="blog-details-newsletter">
+          <h2 class="blog-details-newsletter-title">Join our mailing list for the latest updates</h2>
+          <div class="blog-details-form-wrap">
+            <div class="blog-newsletter-form w-form">
+              <form id="wf-form-" name="wf-form-" data-name="Blog Details CTA Form" method="get" class="blog-details-form" data-wf-page-id="6ac33744997d720e7f644c7f" data-wf-element-id="afe4b209-0546-9977-3632-e5f140b2e6ba"><label for="blog-newsletter-email" class="blog-details-form-label">Email address</label><input class="blog-details-input w-input" maxlength="256" name="Email" data-name="Email" placeholder="Email your email address" type="email" id="Email" required=""><input type="submit" data-wait="Please wait..." class="blog-details-form-button w-button" value="Subscribe"></form>
+              <div class="form-message w-form-done">
+                <div>Thanks for subscribing! Fresh hiring insights are on their way to your inbox.</div>
+              </div>
+              <div class="form-message is-error w-form-fail">
+                <div>Please enter a valid email address and try again.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

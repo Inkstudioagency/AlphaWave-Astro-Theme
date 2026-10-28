@@ -1,0 +1,30 @@
+---
+import { formatDate, type BlogPost } from '@/lib/content';
+
+interface Props {
+  post: BlogPost;
+  /** Extra modifier on the title, e.g. "is-related" or "is-blogs-grid" */
+  titleVariant?: string;
+}
+
+const { post, titleVariant } = Astro.props;
+const href = `/blog/${post.slug}`;
+---
+
+<div class="blog-card">
+  <a href={href} class="blog-card-image-wrapper w-inline-block"><img loading="lazy" src={post.mainImage.url} alt={post.mainImage.alt} class="blog-card-image" />
+    <div class="blog-card-hover-overlay">
+      <div class="blog-card-hover-pill">Read article</div>
+    </div>
+  </a>
+  <div class="blog-card-body">
+    <div class="blog-card-meta">
+      <div class="blog-card-author">{post.author.name}</div>
+      <div class="blog-card-separator">-</div>
+      <div class="blog-card-date">{formatDate(post.publishedDate)}</div>
+    </div>
+    <a href={href} class="blog-card-title-block w-inline-block">
+      <h3 class:list={['blog-card-title', titleVariant]}>{post.title}</h3>
+    </a>
+  </div>
+</div>

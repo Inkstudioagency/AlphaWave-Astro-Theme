@@ -1,0 +1,128 @@
+---
+// Converted from Template/instructions.html (section_instructions).
+// Same markup as the original; the copy describes the Astro + Strapi version of the theme.
+---
+
+<section class="section_instructions">
+  <div class="w-layout-blockcontainer container-main w-container">
+    <div page-load-4="" class="instructions-layout">
+      <nav class="instructions-nav">
+        <a href="#getting-started" class="instructions-nav-link">Getting Started</a>
+        <a href="#variables" class="instructions-nav-link">Variables</a>
+        <a href="#components" class="instructions-nav-link">Components</a>
+        <a href="#cms" class="instructions-nav-link">CMS Collections</a>
+        <a href="#forms" class="instructions-nav-link">Forms</a>
+        <a href="#icons" class="instructions-nav-link">SVG Icons</a>
+        <a href="#faq-accordion" class="instructions-nav-link">FAQ Accordion</a>
+        <a href="#gsap-animations" class="instructions-nav-link">Animations</a>
+        <a href="#utility-pages" class="instructions-nav-link">Utility Pages</a>
+      </nav>
+      <div class="instructions-content">
+        <div id="getting-started" class="instructions-block">
+          <h2 class="heading-style-4">Getting Started</h2>
+          <p class="text-size-regular">AlphaWave is an Astro theme with a Strapi CMS for blog posts, jobs and services. Follow these steps to make it yours.</p>
+          <ul role="list" class="utility-list">
+            <li class="utility-list-item">Run npm install, then npm run cms:install, npm run cms:seed and npm run cms:dev to start Strapi with the demo content. Copy .env.example to .env and run npm run dev in a second terminal.</li>
+            <li class="utility-list-item">Open the Style Guide page first. It shows every heading, text style, color, button and form field the template uses.</li>
+            <li class="utility-list-item">Set your site name, URL, logo, default SEO and footer text in src/config/config.json, the navigation in src/config/menu.json and the social links in src/config/social.json.</li>
+            <li class="utility-list-item">Update the SEO title and meta description of each page in its file in src/pages.</li>
+          </ul>
+        </div>
+        <div id="variables" class="instructions-block">
+          <h2 class="heading-style-4">Colors, Spacing &amp; Typography</h2>
+          <p class="text-size-regular">Every color, font, size, line height, letter spacing, spacer and radius is a CSS variable at the top of src/styles/alphawave.css. Change a variable once and the whole site updates.</p>
+          <ul role="list" class="utility-list">
+            <li class="utility-list-item"><strong>Color Palette</strong> holds the raw shades (Primary, Secondary, Gray, White, Black and accent colors).</li>
+            <li class="utility-list-item"><strong>Theme Colors</strong> holds the semantic tokens used by the styles: Text Color, BG Color, Border Color and Button Color. Point a theme token at a different palette shade to rebrand.</li>
+            <li class="utility-list-item"><strong>Typography</strong> holds font families, sizes, weights, line heights and letter spacing, with tablet and mobile values in the media queries. Two Google Fonts are self-hosted by the Astro Fonts API (astro.config.mjs): Inter for headings, body text, navigation and buttons, and Literata, the accent font used for the italic highlight words in headings.</li>
+            <li class="utility-list-item"><strong>Base collection</strong> holds spacers, radius, container sizes and blur. Its responsive values are applied on the page-wrapper class.</li>
+          </ul>
+          <div class="instructions-callout">To rebrand quickly, change Primary Color 500 (mint accent) and Secondary Color 700/800 (dark green sections). The Theme Colors pick up the new values automatically.</div>
+        </div>
+        <div id="components" class="instructions-block">
+          <h2 class="heading-style-4">Components</h2>
+          <p class="text-size-regular">Repeated pieces are Astro components in src/components. Edit a component once to update every page that uses it.</p>
+          <ul role="list" class="utility-list">
+            <li class="utility-list-item"><strong>Header, Footer and CTA</strong> appear on every page (src/components/layout and src/components/sections/shared). Their links and texts come from the files in src/config.</li>
+            <li class="utility-list-item"><strong>Buttons</strong> (PrimaryButton, SecondaryButton and LinkButton in src/components/ui) take a label and a link.</li>
+            <li class="utility-list-item"><strong>Cards</strong> (BlogCard, JobCard and ServiceCard in src/components/cards) render the CMS content everywhere it appears, so a change to a card applies to every list.</li>
+          </ul>
+        </div>
+        <div id="cms" class="instructions-block">
+          <h2 class="heading-style-4">CMS Collections</h2>
+          <p class="text-size-regular">Strapi feeds the dynamic content. Add, edit or unpublish entries in the Strapi admin, then rebuild the site and every list updates on its own.</p>
+          <ul role="list" class="utility-list">
+            <li class="utility-list-item"><strong>Blog Posts</strong> feed the blog lists on Home, About, Services and Blogs, plus the article page for each post. Featured posts appear at the top of the Blogs page.</li>
+            <li class="utility-list-item"><strong>Services</strong> feed the services slider on Home and the Services page, plus the details page for each service. Sort order sets their position.</li>
+            <li class="utility-list-item"><strong>Jobs</strong> and <strong>Companies</strong> feed the job listings on Home and the Jobs page, plus the page for each role. Each job links to the company that publishes it.</li>
+          </ul>
+          <div class="instructions-callout">Each detail page takes its SEO title, description and share image from the entry. Add a Strapi webhook that triggers a new deploy so published changes go live automatically.</div>
+        </div>
+        <div id="forms" class="instructions-block">
+          <h2 class="heading-style-4">Forms</h2>
+          <p class="text-size-regular">The Contact form, the Style Guide form and the Footer newsletter post to the endpoint in the PUBLIC_FORM_ENDPOINT environment variable, so any form service such as Formspree or Basin works without code changes.</p>
+          <ul role="list" class="utility-list">
+            <li class="utility-list-item">Every field has a visible label. Rename a field with its name attribute so submissions stay readable.</li>
+            <li class="utility-list-item">Success and error messages use the form-message class (and form-message is-error). Edit their text directly in the component.</li>
+          </ul>
+          <div class="instructions-callout">Without an endpoint the forms run in demo mode: they show the success message but send nothing. Set PUBLIC_FORM_ENDPOINT before you launch.</div>
+        </div>
+        <div id="icons" class="instructions-block">
+          <h2 class="heading-style-4">SVG Icons</h2>
+          <p class="text-size-regular">Button arrows, slider arrows, social icons, contact icons (phone, email, office) and card icons are inline SVG code. Each SVG uses currentColor, width 100% and height 100%, so the class around it controls its size and color.</p>
+          <ul role="list" class="utility-list">
+            <li class="utility-list-item"><strong>Change the color of every button icon</strong>: edit the Button Icon Dark or Button Icon Light variable in the theme colors.</li>
+            <li class="utility-list-item"><strong>Change other icons</strong>: edit the color variable used by the icon class (for example contact-info-icon uses Text Color Primary Dark, contact-location-icon uses Text Color Dark).</li>
+            <li class="utility-list-item"><strong>Replace an icon</strong>: paste your new SVG in place of the old one and set its fill or stroke to currentColor and its width and height to 100%. Keep aria-hidden=&quot;true&quot; for decorative icons. Social icons live in src/components/ui/SocialIcon.astro.</li>
+          </ul>
+        </div>
+        <div id="faq-accordion" class="instructions-block">
+          <h2 class="heading-style-4">FAQ Accordion</h2>
+          <p class="text-size-regular">Each FAQ item opens and closes with the Toggle FAQ answer interaction included in public/js/webflow.js. It is scoped to the item, so every FAQ works on its own.</p>
+          <ul role="list" class="utility-list">
+            <li class="utility-list-item">Clicking the question animates the answer height from 0 to auto and rotates the plus icon 45 degrees. A second click plays it in reverse.</li>
+            <li class="utility-list-item">To add a question, copy an existing FAQ item in the FAQ section and change its question and answer text. No extra setup is needed.</li>
+          </ul>
+        </div>
+        <div id="gsap-animations" class="instructions-block">
+          <h2 class="heading-style-4">Animations</h2>
+          <p class="text-size-regular">The animations run on GSAP through the interaction runtime in public/js/webflow.js, and most of them are attached with attributes, so you can add or remove motion on any element in the markup. Visitors who turn on reduced motion in their operating system see every element in its final state, with no movement.</p>
+          <h3 class="heading-style-6">Interactions and What They Do</h3>
+          <ul role="list" class="utility-list">
+            <li class="utility-list-item">Hero Load Animation (page load): elements with page-load-1, page-load-2, page-load-3 or page-load-4 fade in and rise 60px, starting 0s, 0.2s, 0.4s and 0.6s after load (page-load-5 = 0.8s).</li>
+            <li class="utility-list-item">Hero Title Animation (page load): the page H1 with hero-title splits into letters that rise and fade in one after another.</li>
+            <li class="utility-list-item">Reveal Animation 0.0s / 0.2s / 0.4s / 0.6s / 0.8s Delay (scroll): elements with Reveal-anim-1 to Reveal-anim-5 fade in and rise 60px when they reach 90% of the viewport. Use 1 for eyebrows, 2 for intro text and button wrappers, 3 to 5 for cards in a row.</li>
+            <li class="utility-list-item">Opacity Reveal (0.2s Delay) (scroll): elements with Reveal-2s fade in without moving.</li>
+            <li class="utility-list-item">Section Title Animation (scroll): section H2s with section-title split into letters that rise in as the heading enters the screen.</li>
+            <li class="utility-list-item">Partners Logo Loop (page load): the logo strip on Home and Contact scrolls left forever (50 seconds per loop).</li>
+            <li class="utility-list-item">Hero Image Scrolling (scroll, Home): the hero photo moves slowly inside its frame as you scroll. It is turned off on mobile.</li>
+            <li class="utility-list-item">Blog Image Hover, Featured Blog Hover, Service Card Hover, Job Card Hover and Values Card Hover (hover): show the arrow badge, the mint overlay, the image zoom or the color change on cards, and play back when the mouse leaves.</li>
+            <li class="utility-list-item">Toggle FAQ answer on click (click): opens and closes each FAQ item.</li>
+            <li class="utility-list-item">Number counters: any element with data-counter counts up from 0 when it scrolls into view (src/scripts/animations.ts).</li>
+          </ul>
+          <h3 class="heading-style-6">Add or Remove an Animation</h3>
+          <ul role="list" class="utility-list">
+            <li class="utility-list-item">Add the attribute to the element in its component, for example Reveal-anim-2=&quot;&quot; or section-title=&quot;&quot;. Names must match exactly.</li>
+            <li class="utility-list-item">To remove an animation, delete the attribute. The element then simply shows without motion.</li>
+            <li class="utility-list-item">Put reveals on wrappers, never on a Primary or Secondary Button itself, so the button hover lift keeps working. Inside CMS lists, put the attribute on the list item.</li>
+          </ul>
+          <h3 class="heading-style-6">Smooth Scrolling</h3>
+          <ul role="list" class="utility-list">
+            <li class="utility-list-item">Smooth scrolling uses Lenis. Change its settings (lerp, wheel multiplier) in src/scripts/animations.ts.</li>
+            <li class="utility-list-item">Every page keeps its data-wf-page id in src/pages: the interaction runtime uses it to load that page&#x27;s animations, so keep it when you edit a page.</li>
+          </ul>
+          <h3 class="heading-style-6">Logo Marquee Structure</h3>
+          <p class="text-size-regular">logos-track-wrap (overflow hidden) holds two identical logos-track rows. Each row moves from 0% to -100% of its own width, so the second row slides in behind the first and the loop never jumps. Each row has right padding equal to its gap. If you add or replace a logo, change it in both rows. The second row is hidden from screen readers with aria-hidden.</p>
+        </div>
+        <div id="utility-pages" class="instructions-block is-last">
+          <h2 class="heading-style-4">Utility Pages</h2>
+          <p class="text-size-regular">The Style Guide, Licenses, Changelog, Instructions, Password and 404 pages are ready to use and are kept out of search results with a noindex meta tag.</p>
+          <ul role="list" class="utility-list">
+            <li class="utility-list-item">The 404 page keeps the shared Header and Footer so visitors can always find their way back.</li>
+            <li class="utility-list-item">Update the Licenses page whenever you add fonts, images or icons from a new source, and log your own changes on the Changelog page.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

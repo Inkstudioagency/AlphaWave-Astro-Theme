@@ -1,0 +1,58 @@
+---
+import config from '@/config/config.json';
+import menu from '@/config/menu.json';
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import SecondaryButton from '@/components/ui/SecondaryButton.astro';
+import { currentLinkProps } from '@/lib/webflow';
+
+const { pathname } = Astro.url;
+const [primary, secondary] = config.navigation_buttons;
+// Webflow component instance ids of the two button groups (desktop menu / mobile bar)
+const groups = [
+  { className: 'general-button-block is-1', instance: ['f1cb9cc2-0bdb-19f7-6d62-c32898b672d8'], ids: ['01b3274b-9abb-c5d9-bdc8-79a2477391f4', '01b3274b-9abb-c5d9-bdc8-79a2477391f5'] },
+  { className: 'general-button-block is-2', instance: ['f1cb9cc2-0bdb-19f7-6d62-c32898b672d8'], ids: ['01b3274b-9abb-c5d9-bdc8-79a2477391f8', '01b3274b-9abb-c5d9-bdc8-79a2477391f9'] },
+];
+const brand = currentLinkProps('/', pathname, 'brand-logo-block w-nav-brand');
+---
+
+<header class="section_header">
+  <div data-animation="over-right" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
+    <div class="nav-inner-block">
+      <div class="container-main w-container">
+        <div class="nav-content-block">
+          <a href="/" {...brand}><img loading="lazy" src={config.site.logo} alt={config.site.logo_alt} class="brand-logo" /></a>
+          <nav role="navigation" class="nav-menu-content w-nav-menu">
+            <div class="nav-link-block">
+              <div class="nav-menu-top">
+                <a href="/" {...brand}><img loading="lazy" src={config.site.logo} alt={config.site.logo_alt} class="brand-logo" /></a>
+                <div class="menu-button-block">
+                  <div class="menu-open-button w-nav-button">
+                    <div class="menu-button-icon w-icon-nav-menu"></div>
+                  </div>
+                </div>
+              </div>
+              {menu.main.map((item) => (
+                <a href={item.url} {...currentLinkProps(item.url, pathname, item.class ?? 'nav-link-item w-nav-link')}>{item.name}</a>
+              ))}
+              <div class={groups[0].className}>
+                <PrimaryButton href={primary.link} label={primary.label} instance={[...groups[0].instance, groups[0].ids[0]]} />
+                <SecondaryButton href={secondary.link} label={secondary.label} instance={[...groups[0].instance, groups[0].ids[1]]} />
+              </div>
+            </div>
+          </nav>
+          <div class="nav-button-block">
+            <div class={groups[1].className}>
+              <PrimaryButton href={primary.link} label={primary.label} instance={[...groups[1].instance, groups[1].ids[0]]} />
+              <SecondaryButton href={secondary.link} label={secondary.label} instance={[...groups[1].instance, groups[1].ids[1]]} />
+            </div>
+            <div class="menu-button-block">
+              <div class="menu-open-button w-nav-button">
+                <div class="menu-button-icon w-icon-nav-menu"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

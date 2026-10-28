@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_list_items",
+  "info": {
+    "displayName": "List item",
+    "icon": "bulletList",
+    "description": "A single line of text, e.g. a service offering"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

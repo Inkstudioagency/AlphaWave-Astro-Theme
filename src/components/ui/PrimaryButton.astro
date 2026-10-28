@@ -1,0 +1,37 @@
+---
+import { WF_COMPONENTS, currentLinkProps, wfTarget } from '@/lib/webflow';
+
+interface Props {
+  href: string;
+  label: string;
+  /** Webflow component instance path, keeps hover interactions scoped */
+  instance: string[];
+  variant?: 'base' | 'on-dark';
+  size?: 'small' | 'default';
+}
+
+const { href, label, instance, variant = 'base', size = 'small' } = Astro.props;
+const c = WF_COMPONENTS.primaryButton;
+const onDark = variant === 'on-dark';
+const classes = [
+  'primary-button',
+  size === 'small' && 'is-small',
+  onDark && `w-variant-${c.onDarkVariant}`,
+  'w-inline-block',
+].filter(Boolean).join(' ');
+const link = currentLinkProps(href, Astro.url.pathname, classes);
+---
+
+<a
+  data-wf-target={wfTarget(c.id, c.id, instance)}
+  data-wf--small-primary-button--variant={variant}
+  data-wf-component-id={c.id}
+  data-wf-variant-state={onDark ? c.onDarkVariant : 'base'}
+  href={href}
+  {...link}
+>
+  <div class="button-text-mask">
+    <div data-wf-target={wfTarget(c.id, c.text, instance)} class="button-text">{label}</div>
+    <div aria-hidden="true" data-wf-target={wfTarget(c.id, c.hoverText, instance)} class="button-text is-hover">{label}</div>
+  </div>
+</a>

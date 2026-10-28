@@ -1,0 +1,33 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import config from '@/config/config.json';
+---
+
+<BaseLayout
+  wfPage="6ac585ccd511fa26e581dd9a"
+  title="Password | AlphaWave"
+  description="This AlphaWave page is password protected. Enter the password you were given to continue, or return to the homepage to explore jobs, services and the blog."
+  noindex
+  bare
+  wrapperClass="is-password"
+>
+  <div class="password-form-wrapper w-password-page w-form">
+    <form method="post" id="email-form" name="email-form" data-name="Email Form" class="password-form w-password-page" data-password-form data-wf-page-id="6ac585ccd511fa26e581dd9a" data-wf-element-id="6ac585ccd511fa26e581dd9e00000000000c">
+      <div aria-hidden="true" class="password-glow is-right"></div>
+      <div aria-hidden="true" class="password-glow"></div>
+      <img src={config.site.logo_white} alt={config.site.logo_alt} page-load-1="" class="password-logo" />
+      <h1 hero-title="" class="password-heading">Protected <span class="heading-accent is-light">Page</span></h1>
+      <p page-load-2="" class="password-text">This page is reserved for AlphaWave clients and candidates. Enter the password you received from your recruitment partner to continue.</p>
+      <div page-load-3="" class="password-field">
+        <label for="pass" class="form-label is-light w-password-page">Password</label>
+        <input class="form-input is-password w-password-page w-input" autofocus="true" maxlength="256" name="pass" data-name="field" placeholder="Enter your password" type="password" id="pass" />
+      </div>
+      <div page-load-4="" class="password-button-wrap">
+        <input type="submit" data-wait="Checking..." class="primary-button is-form-submit is-on-dark w-password-page w-button" value="Unlock Page" />
+      </div>
+      <div class="form-message is-error w-password-page w-form-fail">
+        <div>Incorrect password. Please try again.</div>
+      </div>
+    </form>
+  </div>
+</BaseLayout>
