@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "AlphaWave",
-    "base_url": "https://example.com",
+    "base_url": "https://alphawave-astro-theme.vercel.app",
     "trailing_slash": false,
     "logo": "/images/alphawave-logo.svg",
     "logo_white": "/images/alphawave-logo-white.svg",
